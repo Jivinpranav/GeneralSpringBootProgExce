@@ -9,11 +9,13 @@ jobs:
   java_mavenrepo:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Java JDK/Maven
+      - name: Setup Java JDK
         uses: actions/setup-java@v4
-        with:
+        with: 
           java-version: '17'
           distribution: 'temurin'
+      - name: setup maven
+        uses: actions/checkout@v3
       - run: mvn --batch-mode --update-snapshots verify
       - run: mkdir staging && cp target/*.jar staging
       - name: Upload a Build Artifact
