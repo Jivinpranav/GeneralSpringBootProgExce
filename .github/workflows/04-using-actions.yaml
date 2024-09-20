@@ -1,9 +1,7 @@
 name: 04-using-actions
 
 on:
-  push:
-    branches:
-      - development
+  workflow_dispatch:
 
 jobs:
   java_mavenrepo:
