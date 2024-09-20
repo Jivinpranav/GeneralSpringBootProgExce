@@ -1,0 +1,23 @@
+name: 04-using-actions
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  java_mavenrepo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Java JDK/Maven
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - run: mvn --batch-mode --update-snapshots verify
+      - run: mkdir staging && cp target/*.jar staging
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Artifactpackage
+          path: staging
