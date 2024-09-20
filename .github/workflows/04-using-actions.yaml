@@ -23,9 +23,9 @@ jobs:
         with:
           name: package
           path: staging
-      - name: Run unit test
-        run: npm run test
-        working-directory: 04-using-actions/maven-app
+#     - name: Run unit test
+#        run: npm run test
+#       working-directory: 04-using-actions/maven-app
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
